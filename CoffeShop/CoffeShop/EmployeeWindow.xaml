@@ -1,0 +1,58 @@
+﻿<Window x:Class="CoffeeShop.EmployeeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Сотрудник" Height="600" Width="900"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Верхняя панель -->
+        <Grid Grid.Row="0" Background="#4A2C2A">
+            <TextBlock Text="Управление сетью кофеен — Сотрудник"
+                       Foreground="White" FontSize="16" FontWeight="Bold"
+                       VerticalAlignment="Center" Margin="15,0,0,0"/>
+        </Grid>
+
+        <Grid Grid.Row="1" Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+
+            <!-- Поиск -->
+            <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="5">
+                <TextBlock Text="Поиск:" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                <TextBox x:Name="SearchBox" Width="200" Height="30"
+                         Padding="5" TextChanged="SearchBox_TextChanged"/>
+            </StackPanel>
+
+            <!-- Таблица товаров -->
+            <DataGrid x:Name="ProductsGrid" Grid.Row="1"
+                      AutoGenerateColumns="False"
+                      CanUserAddRows="False"
+                      SelectionMode="Single"
+                      Margin="5">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Название" Binding="{Binding Name}" Width="200"/>
+                    <DataGridTextColumn Header="Категория" Binding="{Binding Category}" Width="120"/>
+                    <DataGridTextColumn Header="Количество" Binding="{Binding Quantity}" Width="100"/>
+                    <DataGridTextColumn Header="Единица" Binding="{Binding Unit}" Width="80"/>
+                    <DataGridTextColumn Header="Кофейня" Binding="{Binding Coffeehouse.Name}" Width="150"/>
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <!-- Кнопка списания -->
+            <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="5">
+                <Button Content="Списать расход" Height="35" Padding="15,0"
+                        Background="#4A2C2A" Foreground="White"
+                        BorderThickness="0" Click="WriteOff_Click"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
+    
