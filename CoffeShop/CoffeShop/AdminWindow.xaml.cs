@@ -37,6 +37,13 @@ namespace CoffeeShop
                     .Include(p => p.Coffeehouse)
                     .AsQueryable();
 
+                foreach (var p in query)
+                {
+                    p.Category ??= string.Empty;
+                    p.Unit ??= string.Empty;
+                    p.Name ??= string.Empty;
+                }
+
                 if (!string.IsNullOrEmpty(search))
                     query = query.Where(p => p.Name.Contains(search));
 

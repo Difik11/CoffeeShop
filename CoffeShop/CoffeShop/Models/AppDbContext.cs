@@ -50,6 +50,14 @@ namespace CoffeeShop.Models
                 .HasOne(s => s.Coffeehouse)
                 .WithMany()
                 .HasForeignKey(s => s.CoffeeHouseId);
+
+            modelBuilder.Entity<Product>()
+                .Property(p => p.Category)
+                .HasDefaultValue("");
+
+            modelBuilder.Entity<Product>()
+                .Property(p => p.Unit)
+                .HasDefaultValue("");
         }
     }
 }
